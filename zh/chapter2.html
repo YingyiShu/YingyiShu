@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+
+  <!-- Social media  -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@OKAI" />
+  <!-- CC Change this--><meta name="twitter:title" content="第二章: 深度学习简史" />
+  <!-- BB Change this--><meta name="twitter:description" content="在这一章里，我们将带你探索由深度学习驱动的神经网络是如何发展到今天的。" />
+  <!-- AA Change this--><meta name="twitter:image" content="https://okai.brown.edu/img/share/zh/zh_2.png" />
+
+  <!-- Change this--><meta property="og:url" content="https://okai.brown.edu/zh/chapter2.html" />
+  <meta property="og:type" content="article" />
+  <!-- CC Change this--><meta property="og:title" content="第二章: 深度学习简史" />
+  <!-- BB Change this--><meta property="og:description" content="在这一章里，我们将带你探索由深度学习驱动的神经网络是如何发展到今天的。" />
+  <!-- AA Change this--><meta property="og:image" content="https://okai.brown.edu/img/share/zh/zh_2.png" />
+  <!-- ...................   -->
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,700" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+  <!-- My stylesheet -->
+  <link rel="stylesheet" href="/css/general_zh.css">
+  <!-- change to own stylesheet -->
+  <link rel="stylesheet" href="/css/chapter2.css">
+
+  <!-- language annotations -->
+  <link rel="alternate" hreflang="zh-Hans" href="https://okai.brown.edu/zh/chapter2.html"/>
+  <link rel="alternate" hreflang="en" href="https://okai.brown.edu/chapter2.html"/>
+  <link rel="canonical" href="https://okai.brown.edu/zh/chapter2.html"/>
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133914635-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-133914635-1');
+    </script>
+
+  <title>第二章 - OKAI</title>
+
+</head>
+
+<body>
+
+  <!-- scrollbar -->
+  <div class="scrollBar" id="myBar"></div>
+
+  <!-- navbar place holder -->
+  <div id="nav-placeholder" ></div>
+
+  <!-- ######################### -->
+  <!-- Chapter content beginning -->
+  <!-- ######################### -->
+
+  <!-- landing section -->
+  <div id="openingText" class="d-flex align-items-center justify-content-center">
+    <!-- start of row 1 -->
+    <div class="row align-items-center justify-content-center">
+      <!-- col 1 -->
+      <div class="d-none d-md-block col-1 arrowIcon" style="position: absolute; left: 5px;">
+        <a href="./chapter1.html" data-toggle="tooltip" title="第一章"><i class="fas fa-caret-left fa-2x"></i></a>
+      </div>
+
+      <!-- col 2 -->
+      <div class="col-10 col-md-4 order-2 order-md-1 text-center">
+        <div class="text-left">
+          <p>第二章</p>
+          <h2>深度学习简史</h2>
+          <p>现今最强大的人工智能系统大多都由深度学习驱动。在这一章里，我们将带你探索神经网络是如何发展到今天的。请向下滚动继续阅读。
+          </p>
+        </div>
+      </div>
+
+      <!-- col 3 -->
+      <div class="col-md-5 order-1 order-md-2">
+        <div id="openingLottie" class="openingAnimation mx-auto"></div>
+      </div>
+
+      <!-- col-4 -->
+      <div class="d-none d-md-block col-1 arrowIcon" style="position: absolute; right: 5px;">
+        <a href="./chapter3.html" data-toggle="tooltip" title="第三章"><i class="fas fa-caret-right fa-2x"></i></a>
+      </div>
+    </div>
+    <!-- end of row 1 -->
+
+    <!-- start of row 2 -->
+    <div class="" style="position: absolute; bottom: 20px;">
+      <div>
+        <p class="iconHeight" id="scrollIcon">向下滚动</p>
+        <i class="iconHeight fas fa-angle-down fa-lg"></i>
+      </div>
+      <!-- end of row 2 -->
+    </div>
+  </div>
+  <!-- end of landing section -->
+
+
+  <!-- ######## Animation & text beginning ######## -->
+  <!-- animation divs -->
+  <div id="neuralLottie" class="animation animLeft upperLayer"></div>
+  <div id="andXorLottie" class="animation animRight topLayer"></div>
+  <div id="fnnLottie" class="animation animLeft threeLayer"></div>
+  <div id="dlLottie" class="animation animRight fourLayer"></div>
+
+  <!-- text begins -->
+
+  <!-- neural animation text section -->
+  <div id="text1" class="bg-1grey scene">
+    <div class="text right">
+      <p>想要了解深度学习是如何发展的，我们先从启发了神经网络的神经元开始，一步步探索人工智能是如何从纷杂的世界中提取信息并将它们转化成“智能”程序的。
+      </p>
+    </div>
+  </div>
+
+  <div id="text2" class="bg-1grey scene">
+    <div class="text right">
+      <p>
+          神经元是人类大脑的基本元素。每个神经元都连接着许多其他的神经元。每个神经元会接收来自相邻神经元的刺激。当这些刺激足够强烈时，神经元就会给它所连接的神经元发出信号（更多的刺激）。
+      </p>
+    </div>
+  </div>
+
+  <div id="text3" class="bg-1grey scene">
+    <div class="text right">
+      <p>受到神经元的启发，计算机科学家创造了<strong data-toggle="tooltip"
+        class="highlight" title="一种可以对数据进行二元分类的单层神经网络">感知器算法
+        </strong>（perceptron）。感知器会接收许多刺激（输入）并生成一个输出值作为结果。我们会在下一章详细讲述感知器算法。
+      </p>
+    </div>
+  </div>
+
+
+  <!-- andXor animation text section -->
+  <div id="text4" class="scene bg-2grey upperLayer">
+    <div class="text left">
+      <p>感知器算法并不能够学习相对复杂的概念。不过，一些简单的概念，比如<strong data-toggle="tooltip"
+         title="当A和B都为真（1）时A与B为真（1），若不然则为假（0）"
+         class="highlight">逻辑与</strong>就可以被感知器所学习。在动画中，感知器用一条直线将逻辑与的两种结果正确地分成两组，每一组都具有形式相同的圆圈。
+      </p>
+    </div>
+  </div>
+
+  <div id="text5" class="scene bg-2grey upperLayer">
+    <div class="text left">
+      <p>感知器不能学习一些更复杂的概念，比如<strong data-toggle="tooltip"
+        title="当A和B不同时，A异或B为真（1），若A，B相同则为假（0）"
+        class="highlight">逻辑异或</strong>。这是因为这些概念是“非线性的”，简而言之，就是我们不能找到一条直线正确地把实心圆和空心圆分隔开。
+      </p>
+    </div>
+  </div>
+
+
+  <!-- fnn animation text section -->
+  <div id="text6" class="scene bg-3grey topLayer">
+    <div class="text right">
+      <p>为了解决这个问题，计算机科学家转向了更加复杂的<strong data-toggle="tooltip" class="highlight"
+        title="最早，最简单的神经网络算法">前馈神经网络算法</strong>。前馈神经网络是一种由多层感知器组成的通用的神经网络。理论上讲，在优质数据上进行足够久的训练之后，前馈神经网络可以学会执行从图片分类到收入预测等复杂的任务。
+      </p>
+    </div>
+  </div>
+
+  <div id="text7" class="scene bg-3grey topLayer">
+    <div class="text right">
+      <p>简单的前馈神经网络听起来很棒，但是它们也有自己的问题。小型的神经网络不足以解决复杂的问题，但是深层的神经网络训练起来非常困难，并需要大量的计算资源和时间。因此，计算机科学家们尝试从大脑更高级的学习机制中寻找灵感。
+      </p>
+    </div>
+  </div>
+
+
+  <!-- DL animation text section-->
+  <div id="text8" class="scene threeLayer bg-4grey">
+    <div class="text left">
+      <p>
+        人类会将物体拆分成基本组成单元进行理解，并利用这些单元的组合和位置关系来理解更复杂的概念。比如，我们看到图中有着一个鼻子，两个耳朵，四条腿的生物，就会把它们组合起来看到一条狗。这种行为启发计算机科学家们创造了可以学习如边、角、形状、质地等视觉元素的
+        <strong class="highlight" data-toggle="tooltip"
+        title="一种主要用来处理和分类图像的神经网络">卷积神经网络</strong>（Convolutional Neural Networks，CNN）。
+      </p>
+    </div>
+  </div>
+
+  <div id="text9" class="scene threeLayer bg-4grey">
+    <div class="text left">
+      <p>
+        深度学习的兴起使许多传统机器学习方法不再流行。在有足够数据和计算力的前提下，深度学习可以达到传统算法难以企及的性能。在计算机硬件的飞速发展以及互联网时代的海量数据之下，我们终于可以将深度学习应用在实际生活中了。
+      </p>
+    </div>
+  </div>
+
+  <!-- ending section -->
+  <div id="endingText" class="lastScene row align-items-center justify-content-around fiveLayer">
+
+    <!-- col 1 -->
+    <div class="d-none d-md-block col-1 arrowIcon" style="position: absolute; left: 5px;">
+      <a href="./chapter1.html" data-toggle="tooltip" title="第一章"><i class="fas fa-caret-left fa-2x"></i></a>
+    </div>
+
+    <div class="col-12 col-md-10">
+      <div class="row justify-content-around">
+
+        <div class="col-10 col-md-5 fourLayer align-self-start">
+          <div class="text-left align-self-start">
+            <h3><strong>总结</strong></h3>
+            <p>在这一章里，我们探索了深度学习一些主要概念背后的灵感，为你打好了了深入理解它们工作原理的基础。在下一章里，我们将详细解析感知器这个深度学习背后最重要的概念。
+            </p>
+
+            <h3><strong>延伸阅读</strong></h3>
+            <p>
+              <a href="https://medium.com/@jayeshbahire/the-xor-problem-in-neural-networks-50006411840b" target="_blank">
+                    The XOR Problem in Neural Networks</a>
+              <br><a href="https://beamandrew.github.io/deeplearning/2017/02/23/deep_learning_101_part1.html" target="_blank">
+                Deep Learning 101 - History and Background</a>
+              <br><a href="https://www.forbes.com/sites/bernardmarr/2016/03/22/a-short-history-of-deep-learning-everyone-should-read/" target="_blank">
+                    A Short History Of Deep Learning </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-10 col-md-5 fourLayer align-self-start">
+          <div class="text-left">
+            <h3><strong>核心词汇</strong></h3>
+            <p><strong>感知器</strong>：一个受到神经元启发的算法，是一种可以对数据进行二元分类的单层神经网络。<br><br>
+              <strong>前馈神经网络</strong>：最早也是最简单的人工神经网络。它是由多层感知器组成的通用的神经网络，可以执行更复杂的任务。<br><br>
+              <strong>卷积神经网络</strong>：一种主要用来处理和分类图像的神经网络。
+            </p>
+          </div>
+        </div>
+
+        <!-- mobile nav button groups -->
+        <div class="col-10 d-md-none fourLayer justify-content-start my-3">
+            <div class="btn-group d-flex" id="nextButtonGroup" role="group">
+                <a class="btn btn-warning w-50" href="./chapter1.html"
+                    role="button" id="prevButton">上一章</a>
+                <span class="btn-warning btn-separator"></span>
+                <a class="btn btn-warning w-50" href="./chapter3.html"
+                    role="button" id="nextButton">下一章</a>
+            </div>
+        </div>
+
+      <!-- end of inner row -->
+      </div>
+    <!-- end of outer col-10 -->
+    </div>
+
+    <!-- col-4 -->
+    <div class="d-none d-md-block col-1 arrowIcon" style="position: absolute; right: 5px;">
+      <a href="./chapter3.html" data-toggle="tooltip" title="第三章"><i class="fas fa-caret-right fa-2x"></i></a>
+    </div>
+
+    <!-- end of ending section -->
+  </div>
+
+  <!-- end of text area -->
+
+  <div class="overlay"></div>
+
+
+  <!-- svg goo filter DO NOT DELETE-->
+  <svg version="1.1" xmlns="https://www.w3.org/2000/svg" style="height: 0; width: 0; position: absolute; top: -9999px; left: -99990px">
+    <defs>
+      <filter color-interpolation-filters="sRGB" id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -9" result="cm" />
+        <feBlend />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Boostrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <!-- GSAP -->
+  <script type="text/javascript" src="/js/TweenMax.min.js"></script>
+  <script type="text/javascript" src="/js/DrawSVGPlugin.min.js"></script>
+  <script type="text/javascript" src="/js/MorphSVGPlugin.min.js"></script>
+
+  <!-- Lottie -->
+  <script type="text/javascript" src="/js/lottie.js"></script>
+
+  <!-- ScrollMagic JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5//plugins/debug.addIndicators.js"></script>
+
+  <script type="text/javascript" src="/js/main.js"></script>
+
+  <!-- change to own js files -->
+  <script type="text/javascript" src="/js/chapter2.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('[data-toggle="tooltip"]').tooltip({
+        placement: "top"
+      });
+    });
+  </script>
+
+</body>
+
+</html>

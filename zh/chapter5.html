@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+
+  <!-- Social media  -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@OKAI" />
+  <!-- CC Change this--><meta name="twitter:title" content="第五章: 前馈神经网络简介" />
+  <!-- BB Change this--><meta name="twitter:description" content="在这一章里，我们会为你剖析最简单的人工神经网络——前馈神经网络。" />
+  <!-- AA Change this--><meta name="twitter:image" content="https://okai.brown.edu/img/share/zh/zh_5.png" />
+
+  <!-- Change this--><meta property="og:url" content="https://okai.brown.edu/zh/chapter5.html" />
+  <meta property="og:type" content="article" />
+  <!-- CC Change this--><meta property="og:title" content="第五章: 前馈神经网络简介" />
+  <!-- BB Change this--><meta property="og:description" content="在这一章里，我们会为你剖析最简单的人工神经网络——前馈神经网络。" />
+  <!-- AA Change this--><meta property="og:image" content="https://okai.brown.edu/img/share/zh/zh_5.png" />
+  <!-- ...................   -->
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,700" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+  <!-- My stylesheet -->
+  <link rel="stylesheet" href="/css/general_zh.css">
+  <!-- change to own stylesheet -->
+  <link rel="stylesheet" href="/css/chapter5.css">
+
+  <!-- language annotations -->
+  <link rel="alternate" hreflang="zh-Hans" href="https://okai.brown.edu/zh/chapter5.html"/>
+  <link rel="alternate" hreflang="en" href="https://okai.brown.edu/chapter5.html"/>
+  <link rel="canonical" href="https://okai.brown.edu/zh/chapter5.html"/>
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133914635-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-133914635-1');
+    </script>
+
+  <title>第五章 - OKAI</title>
+
+</head>
+
+<body>
+  <!-- scrollbar -->
+  <div class="scrollBar" id="myBar"></div>
+
+  <!-- navbar place holder -->
+  <div id="nav-placeholder" ></div>
+
+  <!-- ######################### -->
+  <!-- Chapter content beginning -->
+  <!-- ######################### -->
+
+  <!-- landing section -->
+  <div id="openingText" class="d-flex align-items-center justify-content-center">
+    <!-- start of row 1 -->
+    <div class="row align-items-center justify-content-center">
+      <!-- col 1 -->
+      <div class="d-none d-md-block col-1 arrowIcon" style="position: absolute; left: 5px;">
+        <a href="./chapter4.html" data-toggle="tooltip" title="第四章"><i class="fas fa-caret-left fa-2x"></i></a>
+      </div>
+
+      <!-- col 2 -->
+      <div class="col-10 col-md-4 order-2 order-md-1 text-center">
+        <div class="text-left">
+          <p>第五章</p>
+          <h2>前馈神经网络简介</h2>
+          <p>前馈神经网络将多个感知器连接来完成更具有挑战性的任务。在这一章里，我们会为你剖析这种最简单的人工神经网络。请向下滚动继续阅读。</p>
+        </div>
+      </div>
+
+      <!-- col 3 -->
+      <div class="col-md-5 order-1 order-md-2">
+        <div id="openingLottie" class="openingAnimation mx-auto"></div>
+      </div>
+
+      <!-- col-4 -->
+      <div class="d-none d-md-block col-1 arrowIcon" style="position: absolute; right: 5px;">
+        <a href="./chapter6.html" data-toggle="tooltip" title="第六章"><i class="fas fa-caret-right fa-2x"></i></a>
+      </div>
+    </div>
+    <!-- end of row 1 -->
+
+    <!-- start of row 2 -->
+    <div class="" style="position: absolute; bottom: 20px;">
+      <div>
+        <p class="iconHeight" id="scrollIcon">向下滚动</p>
+        <i class="iconHeight fas fa-angle-down fa-lg"></i>
+      </div>
+      <!-- end of row 2 -->
+    </div>
+  </div>
+  <!-- end of landing section -->
+
+
+  <!-- ######## Animation & text beginning ######## -->
+  <!-- animation divs -->
+  <div id="fnnLottie" class="animation animLeft upperLayer"></div>
+  <div id="tempLottie" class="animation animRight topLayer"></div>
+  <div id="complexLottie" class="animation animLeft threeLayer"></div>
+
+  <!-- text begins -->
+
+  <!-- fnn animation text section -->
+  <div id="text1" class="bg-1grey scene">
+    <div class="text right">
+      <p>到目前为止，我们只讲解过由一个感知器所构成的神经网络。单个感知器算法并不是很强大，他们学习不了过于复杂的概念。为了学习更加复杂的概念，我们需要把更多的感知器连接在一起从而组成更高级的网络模型。
+      </p>
+    </div>
+  </div>
+
+  <div id="text2" class="bg-1grey scene">
+    <div class="text right">
+      <p>把多个感知器分层连接在一起就构成了一个前馈神经网络。我们的输入单元也相应地被抽象成输入层。在输入层和输出层之间的被称为<strong class="highlight"
+        data-toggle="tooltip"title="一个神经网络中位于中间的所有执行数学运算的层">隐藏层</strong>。它们相对于这个网络的输入和输出是“隐身的”。
+      </p>
+    </div>
+  </div>
+
+  <div id="text3" class="bg-1grey scene">
+    <div class="text right">
+      <p>最后一层是输出层。当一个网络中有n层需要进行计算时，我们称这个网络有n层。换句话说，这个网络具有n-1个隐藏层和1个输出层。
+      </p>
+    </div>
+  </div>
+
+
+  <!-- temp animation text section -->
+  <div id="text4" class="scene bg-2grey upperLayer">
+    <div class="text left">
+      <p>接下来，我们来看一个简单的神经网络解决现实问题的例子：我们将用一个已经训练好的神经网络来预测明天的温度区间。
+      </p>
+    </div>
+  </div>
+
+  <div id="text5" class="scene bg-2grey upperLayer">
+    <div class="text left">
+      <p>我们将使用一个简单的双层前馈神经网络。它只需要两个输入值：今天的最高和最低温度。
+      </p>
+    </div>
+  </div>
+
+  <div id="text6" class="scene bg-2grey upperLayer">
+    <div class="text left">
+      <p>输入层会接收这两个输入值，然后传递给位于隐藏层的四个感知器去进行运算。隐藏层的输出会接着传递到位于输出层的两个输出单元。这两个单元会生成最后的结果，也就是 这个网络对于明天最高和最低气温的预测。
+      </p>
+    </div>
+  </div>
+
+  <div id="text7" class="scene bg-2grey upperLayer">
+    <div class="text left">
+      <p>在这个网络中，位于隐藏层的每一个<strong data-toggle="tooltip" class="highlight"
+        title="一个复杂神经网络中的单个感知器">节点</strong>都有一个ReLU函数，但是最后一层却是一个线性层（也就是没有任何激活函数）。在这里我们并不需要控制感知器的输出，那为什么我们还是要使用激活函数呢？ReLU在这里究竟起到了什么作用？
+      <p>
+    </div>
+  </div>
+
+  <div id="text8" class="scene bg-2grey upperLayer">
+    <div class="text left">
+      <p>
+        这其中的原因是，即便我们有多个相连的线性层，从数学的角度看，这个更复杂的网络和只有单个线性层的网络是没有本质区别的。为了让这些被添加的层起到作用，我们需要加入<strong data-toggle="tooltip"
+        class="highlight" title="线性整流函数。一种被经常用于增加非线性的激活函数">ReLU</strong>函数让这些隐藏层变成非线性的。
+
+      </p>
+    </div>
+  </div>
+
+
+  <!-- complex animation text section-->
+  <div id="text9" class="scene topLayer bg-3grey">
+    <div class="text right">
+      <p>
+        有了这些激活函数，我们就可以连接起足够多的隐藏层来让神经网络学习更复杂的任务，例如在第零章中所展示的手写数字识别任务。
+      </p>
+    </div>
+  </div>
+
+  <div id="text10" class="scene topLayer bg-3grey">
+    <div class="text right">
+      <p>
+        我们已经理解了前馈神经网络的基本原理，现在就来看一看如何训练一个网络模型来识别手写数字吧！
+      </p>
+    </div>
+  </div>
+
+  <!-- ending section -->
+  <div id="endingText" class="lastScene row align-items-center justify-content-around fiveLayer">
+
+    <!-- col 1 -->
+    <div class="d-none d-md-block col-1 arrowIcon" style="position: absolute; left: 5px;">
+      <a href="./chapter4.html" data-toggle="tooltip" title="第四章"><i class="fas fa-caret-left fa-2x"></i></a>
+    </div>
+
+    <div class="col-12 col-md-10">
+      <div class="row justify-content-around">
+
+        <div class="col-10 col-md-5 fourLayer align-self-start">
+          <div class="text-left align-self-start">
+            <h3><strong>总结</strong></h3>
+            <p>在这一章中，我们探究了前馈神经网络中的每一个元素是如何相互合作来解决复杂问题的。在下一章中，我们将解析第零章中所使用到的可以识别手写数字的神经网络。</p>
+
+            <h3><strong>延伸阅读</strong></h3>
+            <p>
+              <a href="https://youtu.be/aircAruvnKk" target="_blank">
+                But what *is* a Neural Network? </a>
+              <br><a href="https://towardsdatascience.com/deep-learning-feedforward-neural-network-26a6705dbdc7" target="_blank">
+                    Deep Learning: Feedforward Neural Network</a>
+              <br><a href="https://cs.stanford.edu/people/eroberts/courses/soco/projects/neural-networks/Architecture/feedforward.html" target="_blank">
+                    Neural Networks - Architecture - Stanford CS</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-10 col-md-5 fourLayer align-self-start">
+          <div class="text-left">
+            <h3><strong>核心词汇</strong></h3>
+            <p>
+              <strong>隐藏层</strong>：一个神经网络中位于中间的所有执行数学运算的层。<br><br>
+              <strong>节点</strong>：一个复杂神经网络中的单个感知器。<br><br>
+              <strong>ReLU</strong>：线性整流函数。一种被经常用于增加非线性的激活函数
+            </p>
+          </div>
+        </div>
+
+        <!-- mobile nav button groups -->
+        <div class="col-10 d-md-none fourLayer justify-content-start my-3">
+            <div class="btn-group d-flex" id="nextButtonGroup" role="group">
+                <a class="btn btn-warning w-50" href="./chapter4.html"
+                    role="button" id="prevButton">上一章</a>
+                <span class="btn-warning btn-separator"></span>
+                <a class="btn btn-warning w-50" href="./chapter6.html"
+                    role="button" id="nextButton">下一章</a>
+            </div>
+        </div>
+
+      <!-- end of inner row -->
+      </div>
+    <!-- end of outer col-10 -->
+    </div>
+
+
+    <!-- col-4 -->
+    <div class="d-none d-md-block col-1 arrowIcon" style="position: absolute; right: 5px;">
+      <a href="./chapter6.html" data-toggle="tooltip" title="第六章"><i class="fas fa-caret-right fa-2x"></i></a>
+    </div>
+
+    <!-- end of ending section -->
+  </div>
+
+
+  <!-- end of text area -->
+
+  <div class="overlay"></div>
+
+
+  <!-- svg goo filter DO NOT DELETE-->
+  <svg version="1.1" xmlns="https://www.w3.org/2000/svg" style="height: 0; width: 0; position: absolute; top: -9999px; left: -99990px">
+    <defs>
+      <filter color-interpolation-filters="sRGB" id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -9" result="cm" />
+        <feBlend />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Boostrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <!-- GSAP -->
+  <script type="text/javascript" src="/js/TweenMax.min.js"></script>
+  <script type="text/javascript" src="/js/DrawSVGPlugin.min.js"></script>
+  <script type="text/javascript" src="/js/MorphSVGPlugin.min.js"></script>
+
+  <!-- Lottie -->
+  <script type="text/javascript" src="/js/lottie.js"></script>
+
+  <!-- ScrollMagic JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5//plugins/debug.addIndicators.js"></script>
+
+  <script type="text/javascript" src="/js/main.js"></script>
+
+  <!-- change to own js files -->
+  <script type="text/javascript" src="/js/chapter5.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('[data-toggle="tooltip"]').tooltip({
+        placement: "top"
+      });
+    });
+  </script>
+
+</body>
+
+</html>
